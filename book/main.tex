@@ -1,0 +1,164 @@
+\documentclass[11pt,a4paper]{book}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german,english]{babel}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% Page geometry
+\geometry{margin=2.5cm}
+\setlength{\headheight}{14pt}
+
+% Graphics path - für Bilder im code/ Verzeichnis
+\graphicspath{{code/chapter01/}{./}}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Beispiel}[section]
+\newtheorem{exercise}{Übung}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Satz}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Korollar}[section]
+
+% Multiple Choice Environment
+\newenvironment{multiplechoice}[1][]
+{%
+    \begin{tcolorbox}[
+        colback=blue!5,
+        colframe=blue!50!black,
+        boxrule=2pt,
+        arc=2mm,
+        left=10pt,
+        right=10pt,
+        top=10pt,
+        bottom=10pt,
+        title={\textbf{Multiple Choice Frage}}
+    ]
+}
+{%
+    \end{tcolorbox}
+}
+
+\newenvironment{solution}
+{%
+    \begin{tcolorbox}[
+        colback=green!5,
+        colframe=green!50!black,
+        boxrule=2pt,
+        arc=2mm,
+        left=10pt,
+        right=10pt,
+        top=10pt,
+        bottom=10pt,
+        title={\textbf{Lösung}}
+    ]
+}
+{%
+    \end{tcolorbox}
+}
+
+% Denoobification environment
+\newenvironment{denoobification}[1][Grundbegriff]
+{%
+    \begin{tcolorbox}[
+        colback=yellow!10,
+        colframe=orange!70!black,
+        boxrule=2pt,
+        arc=2mm,
+        left=15pt,
+        right=15pt,
+        top=15pt,
+        bottom=15pt,
+        fonttitle=\bfseries\large\color{orange!70!black},
+        title={\Large $\star$ Denoobification: #1},
+        breakable,
+        enhanced
+    ]
+}
+{%
+    \end{tcolorbox}
+}
+
+% Dark Souls style boss challenge environment
+\newenvironment{bosschallenge}[1][Boss Challenge]
+{%
+    \begin{tcolorbox}[
+        colback=black!95,
+        colframe=red!80!black,
+        boxrule=3pt,
+        arc=0mm,
+        left=15pt,
+        right=15pt,
+        top=15pt,
+        bottom=15pt,
+        fonttitle=\bfseries\Large\color{red!80!yellow},
+        title={\Large $\dagger$ #1 $\dagger$}
+    ]
+    \color{white}
+}
+{%
+    \end{tcolorbox}
+}
+
+% Custom colors
+\definecolor{bossred}{RGB}{139,0,0}
+\definecolor{bossgold}{RGB}{255,215,0}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot[C]{\thepage}
+
+% Chapter formatting
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{bossred}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bossred,
+    urlcolor=blue,
+    citecolor=green!50!black
+}
+
+% Title information
+\title{Stochastische Calculus\\\large Mit Dark Souls Herausforderungen}
+\author{Benutzerdefiniertes Lehrbuch}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+% Include chapters
+\include{chapters/chapter00_denoobification_masstheorie}
+\include{chapters/chapter01}
+
+\backmatter
+
+\end{document}
